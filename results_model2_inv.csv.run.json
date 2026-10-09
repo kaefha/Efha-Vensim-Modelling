@@ -1,0 +1,25 @@
+{
+  "backend": "builtin",
+  "model_sha256": "1ab464ae28250cdc99d18d652e933b429ce75f4e9164b08e490ed003eb8ae20d",
+  "parameters": {},
+  "initial_time": 0.0,
+  "time_step": 0.125,
+  "final_time": 100.0,
+  "time_unit": "Week",
+  "saveper": 1.0,
+  "saved_points": 101,
+  "actual_last_time": 100.0,
+  "native_verified": false,
+  "variables": [
+    "Inventory"
+  ],
+  "variable_units": {
+    "Inventory": "units"
+  },
+  "numerical_method": "Euler",
+  "python_version": "3.14.6",
+  "backend_version": null,
+  "status": "completed",
+  "warnings": [],
+  "source_csv_sha256": "22a2fbbe4ea4b01089ac274281bbb394d2fa83552e3372807baff6792a17fc76"
+}

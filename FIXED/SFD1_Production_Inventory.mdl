@@ -1,0 +1,159 @@
+Production rate=
+	Desired production rate
+	~	units/Week
+	~	The firm's actual production rate is assumed to equal desired production.
+	|
+
+dic=
+	4
+	~	Week
+	~	Desired inventory coverage
+	|
+
+Correction for inventory=
+	(Desired inventory-Inventory)/tci
+	~	units/Week
+	~	The firm tries to correct discrepancies between desired and actual \
+		inventory in eight weeks.
+	|
+
+Shipment rate=
+	Order rate
+	~	units/Week
+	~	The firm supplies its customers from a stock of finished inventory, which \
+		is generally sufficient to meet orders as they are received.
+	|
+
+Inventory= INTEG (
+	+Production rate-Shipment rate,
+		4000)
+	~	units
+	~	The initial inventory is four weeks' worth of shipments (1,000 x 4 = 4,000)
+	|
+
+Desired inventory=
+	Average order rate*dic
+	~	units
+	~	Desired inventory is four weeks' worth ('dic') of anticipated shipments.
+	|
+
+Average order rate=
+	SMOOTH(Order rate,taor)
+	~	units/Week
+	~	The firm forecast shipments by averaging past orders over an eight-week \
+		period as a way of smoothing out any noise or lumpiness in demand.
+	|
+
+Order rate=
+	1000*(1+step(0.1,10))
+	~	units/Week
+	~	In this model customer orders will equal a constant Order Rate (of 1,000 \
+		units/week) until period 10, when orders step up by 10%, and then remain \
+		at the higher rate.
+	|
+
+Desired production rate=
+	Average order rate+Correction for inventory
+	~	units/Week
+	~	Desired production is determined by anticipated shipments, modified by a \
+		correction to maintain inventory at the desired level.
+	|
+
+tci=
+	8
+	~	Week
+	~	Time to correct Inventory
+	|
+
+taor=
+	8
+	~	Week
+	~	Time to average order rate
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Week
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Week
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Week
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Week
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96
+10,1,Inventory,223,104,40,20,3,3,0,0,0,0,0,0
+12,2,48,39,114,10,8,0,3,0,0,-1,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(151,112)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(78,112)|
+11,5,48,114,112,6,8,34,3,0,0,1,0,0,0
+10,6,Production rate,114,131,49,11,32,3,0,0,-1,0,0,0
+12,7,48,497,111,10,8,0,3,0,0,-1,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(434,111)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(316,111)|
+11,10,48,376,111,6,8,34,3,0,0,1,0,0,0
+10,11,Shipment rate,376,130,44,11,32,3,0,0,-1,0,0,0
+10,12,Desired production rate,213,386,74,11,0,3,0,0,0,0,0,0
+10,13,Correction for inventory,224,208,75,11,0,3,0,0,0,0,0,0
+10,14,Desired inventory,351,249,55,11,0,3,0,0,0,0,0,0
+10,15,Order rate,494,216,34,11,0,3,0,0,0,0,0,0
+10,16,Average order rate,321,336,60,11,0,3,0,0,0,0,0,0
+10,17,tci,285,174,9,11,0,3,0,0,0,0,0,0
+10,18,dic,418,288,11,11,0,3,0,0,0,0,0,0
+10,19,taor,405,382,14,11,0,3,0,0,0,0,0,0
+1,20,13,12,1,0,0,0,0,0,0,-1--1--1,,1|(200,231)|
+1,21,16,12,1,0,0,0,0,0,0,-1--1--1,,1|(273,366)|
+1,22,14,13,1,0,0,0,0,0,0,-1--1--1,,1|(302,216)|
+1,23,17,13,0,0,0,0,0,0,0,-1--1--1,,1|(265,184)|
+1,24,18,14,1,0,0,0,0,0,0,-1--1--1,,1|(364,259)|
+1,25,19,16,1,0,0,0,0,0,0,-1--1--1,,1|(377,374)|
+1,26,15,16,1,0,0,0,0,0,0,-1--1--1,,1|(447,317)|
+1,27,15,11,1,0,0,0,0,0,0,-1--1--1,,1|(448,161)|
+1,28,16,14,1,0,0,0,0,0,0,-1--1--1,,1|(348,297)|
+1,29,1,13,1,0,0,0,0,0,0,-1--1--1,,1|(237,153)|
+1,30,12,6,1,0,0,0,0,64,0,-1--1--1,,1|(68,201)|
+///---\\\
+:GRAPH INVENTORY
+:TITLE Inventory vs Desired inventory
+:SCALE
+:VAR Desired inventory
+:Y-MIN 2800
+:Y-MAX 5200
+:LINE-WIDTH 3
+:VAR Inventory
+:Y-MIN 2800
+:Y-MAX 5200
+:LINE-WIDTH 2
+:GRAPH RATES
+:TITLE Order, Average order and Production rate
+:SCALE
+:VAR Order rate
+:Y-MIN 900
+:Y-MAX 1300
+:VAR Average order rate
+:Y-MIN 900
+:Y-MAX 1300
+:VAR Production rate
+:Y-MIN 900
+:Y-MAX 1300
+:LINE-WIDTH 2

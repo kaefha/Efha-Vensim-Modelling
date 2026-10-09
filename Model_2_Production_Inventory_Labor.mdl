@@ -1,0 +1,250 @@
+Production rate=
+	Normal production rate
+	~	units/Week
+	~	Production is now constrained by the available labor force.
+	|
+
+Hiring rate=
+	Quit rate+Correction for labor
+	~	person/Week
+	~	The firm's hiring policy is to replace those workers who quit, modified by \
+		a correction to bring the actual workforce into balance with the desired \
+		workforce.
+	|
+
+Correction for labor=
+	(Desired labor-Labor)/tcl
+	~	person/Week
+	~	Because of the delays in hiring new people, it takes 24 weeks to make \
+		corrections to the workforce.
+	|
+
+Quit rate=
+	Labor/ade
+	~	person/Week
+	~	Workers stay with the firm an average of 50 weeks (no-layoff policy).
+	|
+
+ade=
+	50
+	~	Week
+	~	Average duration of employment
+	|
+
+Average labor productivity=
+	20
+	~	units/person/Week
+	~	Average productivity is 20 units per worker per week and is quite \
+		constant over time.
+	|
+
+Desired labor=
+	Desired production rate/Average labor productivity
+	~	person
+	~	The desired workforce is determined by desired production and average \
+		productivity.
+	|
+
+tcl=
+	24
+	~	Week
+	~	Time to correct labor
+	|
+
+Normal production rate=
+	Labor*Average labor productivity
+	~	units/Week
+	~	Union rules prevent the use of overtime or undertime.
+	|
+
+Labor= INTEG (
+	+Hiring rate-Quit rate,
+		50)
+	~	person
+	~	Initial labor = 1,000 / 20 = 50 persons (initial equilibrium).
+	|
+
+dic=
+	4
+	~	Week
+	~	Desired inventory coverage
+	|
+
+Correction for inventory=
+	(Desired inventory-Inventory)/tci
+	~	units/Week
+	~	The firm tries to correct discrepancies between desired and actual \
+		inventory in eight weeks.
+	|
+
+Shipment rate=
+	Order rate
+	~	units/Week
+	~	The firm supplies its customers from a stock of finished inventory, which \
+		is generally sufficient to meet orders as they are received.
+	|
+
+Inventory= INTEG (
+	+Production rate-Shipment rate,
+		4000)
+	~	units
+	~	The initial inventory is four weeks' worth of shipments (1,000 x 4 = 4,000)
+	|
+
+Desired inventory=
+	Average order rate*dic
+	~	units
+	~	Desired inventory is four weeks' worth ('dic') of anticipated shipments.
+	|
+
+Average order rate=
+	SMOOTH(Order rate,taor)
+	~	units/Week
+	~	The firm forecast shipments by averaging past orders over an eight-week \
+		period as a way of smoothing out any noise or lumpiness in demand.
+	|
+
+Order rate=
+	1000*(1+step(0.1,10))
+	~	units/Week
+	~	In this model customer orders will equal a constant Order Rate (of 1,000 \
+		units/week) until period 10, when orders step up by 10%, and then remain \
+		at the higher rate.
+	|
+
+Desired production rate=
+	Average order rate+Correction for inventory
+	~	units/Week
+	~	Desired production is determined by anticipated shipments, modified by a \
+		correction to maintain inventory at the desired level.
+	|
+
+tci=
+	8
+	~	Week
+	~	Time to correct Inventory
+	|
+
+taor=
+	8
+	~	Week
+	~	Time to average order rate
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Week
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Week
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Week
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Week
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96
+10,1,Inventory,291,70,40,20,3,3,0,0,0,0,0,0
+12,2,48,107,80,8,8,0,3,0,0,-1,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(219,78)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(145,78)|
+11,5,48,182,78,6,8,34,3,0,0,1,0,0,0
+10,6,Production rate,182,97,49,11,32,3,0,0,-1,0,0,0
+12,7,48,565,77,8,8,0,3,0,0,-1,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(503,77)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(384,77)|
+11,10,48,444,77,6,8,34,3,0,0,1,0,0,0
+10,11,Shipment rate,444,96,44,11,32,3,0,0,-1,0,0,0
+10,12,Desired production rate,368,279,74,11,0,3,0,0,0,0,0,0
+10,13,Correction for inventory,292,174,75,11,0,3,0,0,0,0,0,0
+10,14,Desired inventory,419,215,55,11,0,3,0,0,0,0,0,0
+10,15,Order rate,562,182,34,11,0,3,0,0,0,0,0,0
+10,16,Average order rate,563,269,60,11,0,3,0,0,0,0,0,0
+10,17,tci,353,140,9,11,0,3,0,0,0,0,0,0
+10,18,dic,460,159,11,11,0,3,0,0,0,0,0,0
+10,19,taor,586,332,14,11,0,3,0,0,0,0,0,0
+1,20,13,12,1,0,0,0,0,0,0,-1--1--1,,1|(293,195)|
+1,21,16,12,1,0,0,0,0,0,0,-1--1--1,,1|(469,284)|
+1,22,14,13,1,0,0,0,0,0,0,-1--1--1,,1|(370,182)|
+1,23,17,13,0,0,0,0,0,0,0,-1--1--1,,1|(333,150)|
+1,24,18,14,1,0,0,0,0,0,0,-1--1--1,,1|(429,204)|
+1,25,19,16,1,0,0,0,0,0,0,-1--1--1,,1|(576,314)|
+1,26,15,16,1,0,0,0,0,0,0,-1--1--1,,1|(572,222)|
+1,27,15,11,1,0,0,0,0,0,0,-1--1--1,,1|(516,127)|
+1,28,16,14,1,0,0,0,0,0,0,-1--1--1,,1|(501,225)|
+1,29,1,13,1,0,0,0,0,0,0,-1--1--1,,1|(305,119)|
+10,30,Desired labor,459,318,43,11,0,3,0,0,0,0,0,0
+10,31,Labor,278,459,57,19,3,3,0,0,0,0,0,0
+12,32,48,62,462,8,8,0,3,0,0,-1,0,0,0
+1,33,35,32,4,0,0,22,0,0,0,-1--1--1,,1|(105,459)|
+1,34,35,31,100,0,0,22,0,0,0,-1--1--1,,1|(186,459)|
+11,35,48,146,459,6,8,34,3,0,0,3,0,0,0
+10,36,Quit rate,146,440,29,11,32,3,0,0,3,0,0,0
+10,37,Average labor productivity,283,336,83,11,0,3,0,0,0,0,0,0
+10,38,tcl,545,408,9,11,0,3,0,0,0,0,0,0
+10,39,ade,86,404,13,11,0,3,0,0,0,0,0,0
+10,40,Normal production rate,130,241,73,11,0,3,0,0,0,0,0,0
+1,41,12,30,1,0,0,0,0,0,0,-1--1--1,,1|(415,320)|
+1,42,37,30,1,0,0,0,0,0,0,-1--1--1,,1|(363,341)|
+1,43,37,40,1,0,0,0,0,0,0,-1--1--1,,1|(203,306)|
+1,44,31,36,1,0,0,0,0,0,0,-1--1--1,,1|(211,427)|
+1,45,31,40,1,0,0,0,0,0,0,-1--1--1,,1|(172,353)|
+1,46,39,36,1,0,0,0,0,0,0,-1--1--1,,1|(112,416)|
+12,47,48,497,458,8,8,0,3,0,0,-1,0,0,0
+1,48,50,31,4,0,0,22,0,0,0,-1--1--1,,1|(374,459)|
+1,49,50,47,100,0,0,22,0,0,0,-1--1--1,,1|(457,459)|
+11,50,48,420,459,6,8,34,3,0,0,3,0,0,0
+10,51,Hiring rate,420,440,34,11,32,3,0,0,-1,0,0,0
+10,52,Correction for labor,441,387,63,11,0,3,0,0,0,0,0,0
+1,53,38,52,1,0,0,0,0,0,0,-1--1--1,,1|(518,391)|
+1,54,52,51,1,0,0,0,0,0,0,-1--1--1,,1|(433,422)|
+1,55,31,52,1,0,0,0,0,0,0,-1--1--1,,1|(337,409)|
+1,56,30,52,1,0,0,0,0,0,0,-1--1--1,,1|(483,373)|
+1,57,36,51,1,0,0,0,0,0,0,-1--1--1,,1|(267,512)|
+1,58,40,6,1,0,0,0,0,0,0,-1--1--1,,1|(136,186)|
+///---\\\
+:GRAPH RATES
+:TITLE Order, Average order, Desired production and Production rate
+:SCALE
+:VAR Order rate
+:Y-MIN 900
+:Y-MAX 1300
+:VAR Average order rate
+:Y-MIN 900
+:Y-MAX 1300
+:VAR Desired production rate
+:Y-MIN 900
+:Y-MAX 1300
+:VAR Production rate
+:Y-MIN 900
+:Y-MAX 1300
+:LINE-WIDTH 2
+:GRAPH INVENTORY
+:TITLE Inventory vs Desired inventory
+:SCALE
+:VAR Desired inventory
+:Y-MIN 2800
+:Y-MAX 5200
+:LINE-WIDTH 3
+:VAR Inventory
+:Y-MIN 2800
+:Y-MAX 5200
+:LINE-WIDTH 2

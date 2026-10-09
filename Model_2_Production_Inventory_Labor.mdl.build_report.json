@@ -1,0 +1,528 @@
+{
+  "strategy": "circular",
+  "moved_auxiliary_nodes": 0,
+  "rerouted_information_arrows": 17,
+  "before": {
+    "node_overlaps": [
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        26,
+        27
+      ]
+    ],
+    "arrow_node_collisions": [
+      {
+        "arrow": 37,
+        "object": 21
+      },
+      {
+        "arrow": 39,
+        "object": 18
+      },
+      {
+        "arrow": 48,
+        "object": 2
+      },
+      {
+        "arrow": 51,
+        "object": 2
+      },
+      {
+        "arrow": 58,
+        "object": 24
+      }
+    ],
+    "physical_node_collisions": [],
+    "arrow_crossings": [
+      [
+        48,
+        51
+      ],
+      [
+        48,
+        58
+      ],
+      [
+        51,
+        58
+      ]
+    ],
+    "flow_crossings": [
+      [
+        48,
+        34
+      ],
+      [
+        51,
+        35
+      ]
+    ],
+    "unsupported_arrows": [],
+    "broken_arrows": [],
+    "shadow_inputs": [],
+    "shadow_overlaps": [],
+    "duplicate_defined": [],
+    "shadow_objects": [],
+    "hidden_shadow_objects": [],
+    "total_information_length": 3192.11,
+    "layout_bounds": [
+      42.0,
+      48.0,
+      786.0,
+      742.0
+    ],
+    "layout_width": 744.0,
+    "layout_height": 694.0,
+    "layout_span": 1438.0,
+    "approximation_tolerance_px": 0.5
+  },
+  "after": {
+    "node_overlaps": [
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        26,
+        27
+      ]
+    ],
+    "arrow_node_collisions": [],
+    "physical_node_collisions": [],
+    "arrow_crossings": [
+      [
+        48,
+        58
+      ]
+    ],
+    "flow_crossings": [
+      [
+        48,
+        34
+      ],
+      [
+        51,
+        33
+      ]
+    ],
+    "unsupported_arrows": [],
+    "broken_arrows": [],
+    "shadow_inputs": [],
+    "shadow_overlaps": [],
+    "duplicate_defined": [],
+    "shadow_objects": [],
+    "hidden_shadow_objects": [],
+    "total_information_length": 3003.4,
+    "layout_bounds": [
+      42.0,
+      48.0,
+      786.0,
+      742.0
+    ],
+    "layout_width": 744.0,
+    "layout_height": 694.0,
+    "layout_span": 1438.0,
+    "approximation_tolerance_px": 0.5
+  },
+  "candidates": [
+    {
+      "strategy": "circular",
+      "quality": [
+        0,
+        3,
+        0,
+        3,
+        3003.4,
+        1438.0
+      ]
+    },
+    {
+      "strategy": "circular",
+      "quality": [
+        0,
+        3,
+        0,
+        3,
+        3003.4,
+        1438.0
+      ]
+    }
+  ],
+  "requested_mode": "circular",
+  "fixed_positions": {
+    "Inventory": [
+      400,
+      70
+    ],
+    "Order rate": [
+      720,
+      200
+    ],
+    "taor": [
+      620,
+      400
+    ],
+    "Average order rate": [
+      520,
+      340
+    ],
+    "dic": [
+      640,
+      270
+    ],
+    "Desired inventory": [
+      530,
+      220
+    ],
+    "tci": [
+      450,
+      140
+    ],
+    "Correction for inventory": [
+      360,
+      180
+    ],
+    "Desired production rate": [
+      360,
+      390
+    ],
+    "Labor": [
+      400,
+      700
+    ],
+    "ade": [
+      180,
+      570
+    ],
+    "Average labor productivity": [
+      400,
+      520
+    ],
+    "Desired labor": [
+      600,
+      460
+    ],
+    "tcl": [
+      660,
+      540
+    ],
+    "Correction for labor": [
+      580,
+      560
+    ],
+    "Normal production rate": [
+      180,
+      440
+    ]
+  },
+  "pass": false,
+  "native_verified": false,
+  "feedback": {
+    "links": [
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 30,
+        "source": "Production rate",
+        "target": "Inventory",
+        "kind": "flow",
+        "displayed": "",
+        "expected": "+",
+        "status": "unmarked",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 31,
+        "source": "Shipment rate",
+        "target": "Inventory",
+        "kind": "flow",
+        "displayed": "",
+        "expected": "-",
+        "status": "unmarked",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 34,
+        "source": "Hiring rate",
+        "target": "Labor",
+        "kind": "flow",
+        "displayed": "",
+        "expected": "+",
+        "status": "unmarked",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 35,
+        "source": "Quit rate",
+        "target": "Labor",
+        "kind": "flow",
+        "displayed": "",
+        "expected": "-",
+        "status": "unmarked",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 37,
+        "source": "Normal production rate",
+        "target": "Production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 38,
+        "source": "Order rate",
+        "target": "Shipment rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 39,
+        "source": "Order rate",
+        "target": "Average order rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 40,
+        "source": "taor",
+        "target": "Average order rate",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 41,
+        "source": "Average order rate",
+        "target": "Desired inventory",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 42,
+        "source": "dic",
+        "target": "Desired inventory",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 43,
+        "source": "Desired inventory",
+        "target": "Correction for inventory",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 44,
+        "source": "Inventory",
+        "target": "Correction for inventory",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "-",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 45,
+        "source": "tci",
+        "target": "Correction for inventory",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 46,
+        "source": "Average order rate",
+        "target": "Desired production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 47,
+        "source": "Correction for inventory",
+        "target": "Desired production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 48,
+        "source": "Correction for labor",
+        "target": "Hiring rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 49,
+        "source": "Quit rate",
+        "target": "Hiring rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 50,
+        "source": "Labor",
+        "target": "Quit rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 51,
+        "source": "ade",
+        "target": "Quit rate",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 52,
+        "source": "Average labor productivity",
+        "target": "Desired labor",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 53,
+        "source": "Desired production rate",
+        "target": "Desired labor",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 54,
+        "source": "Desired labor",
+        "target": "Correction for labor",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 55,
+        "source": "Labor",
+        "target": "Correction for labor",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "-",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 56,
+        "source": "tcl",
+        "target": "Correction for labor",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 57,
+        "source": "Average labor productivity",
+        "target": "Normal production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 2",
+        "arrow": 58,
+        "source": "Labor",
+        "target": "Normal production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      }
+    ],
+    "loops": [],
+    "conflicts": [],
+    "unresolved": [],
+    "status": "needs_review",
+    "native_verified": false,
+    "symbol_placement_requires_native_review": true,
+    "scope": "只证明支持表达式在当前字面常量下的直接作用；未标注不等于已验证。重跑改变参数后须重查；回路性质不表示动态稳定性。"
+  }
+}

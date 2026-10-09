@@ -1,0 +1,152 @@
+{UTF-8}
+ade = 50
+	~ Week
+	~ |
+
+Average labor productivity = 20
+	~ units/person/Week
+	~ |
+
+Average order rate = SMOOTH(Order rate, taor)
+	~ units/Week
+	~ |
+
+Correction for inventory = (Desired inventory - Inventory) / tci
+	~ units/Week
+	~ |
+
+Correction for labor = (Desired labor - Labor) / tcl
+	~ person/Week
+	~ |
+
+Desired inventory = Average order rate * dic
+	~ units
+	~ |
+
+Desired labor = Desired production rate / Average labor productivity
+	~ person
+	~ |
+
+Desired production rate = Average order rate + Correction for inventory
+	~ units/Week
+	~ |
+
+dic = 4
+	~ Week
+	~ |
+
+FINAL TIME = 100
+	~ Week
+	~ |
+
+Hiring rate = Quit rate + Correction for labor
+	~ person/Week
+	~ |
+
+INITIAL TIME = 0
+	~ Week
+	~ |
+
+Inventory = INTEG(Production rate - Shipment rate, 4000)
+	~ units
+	~ |
+
+Labor = INTEG(Hiring rate - Quit rate, 50)
+	~ person
+	~ |
+
+Normal production rate = Labor * Average labor productivity
+	~ units/Week
+	~ |
+
+Order rate = 1000 * (1 + STEP(0.1, 10))
+	~ units/Week
+	~ |
+
+Production rate = Normal production rate
+	~ units/Week
+	~ |
+
+Quit rate = Labor / ade
+	~ person/Week
+	~ |
+
+SAVEPER = 1
+	~ Week
+	~ |
+
+Shipment rate = Order rate
+	~ units/Week
+	~ |
+
+taor = 8
+	~ Week
+	~ |
+
+tci = 8
+	~ Week
+	~ |
+
+tcl = 24
+	~ Week
+	~ |
+
+TIME STEP = 1
+	~ Week
+	~ |
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96
+10,1,Inventory,270,70,40,20,8,3,0,0,0,0,0,0
+10,2,Production rate,140,110,49,11,8,3,0,0,0,0,0,0
+10,3,Shipment rate,410,70,44,11,8,3,0,0,0,0,0,0
+10,4,Order rate,540,120,34,11,8,3,0,0,0,0,0,0
+10,5,Average order rate,460,200,60,11,8,3,0,0,0,0,0,0
+10,6,Desired inventory,390,140,55,11,8,3,0,0,0,0,0,0
+10,7,Correction for inventory,270,140,75,11,8,3,0,0,0,0,0,0
+10,8,Desired production rate,270,220,74,11,8,3,0,0,0,0,0,0
+10,9,tci,310,105,15,11,8,3,0,0,0,0,0,0
+10,10,dic,450,140,15,11,8,3,0,0,0,0,0,0
+10,11,taor,530,220,15,11,8,3,0,0,0,0,0,0
+10,12,Normal production rate,120,230,73,11,8,3,0,0,0,0,0,0
+10,13,Average labor productivity,200,300,83,11,8,3,0,0,0,0,0,0
+10,14,Desired labor,370,300,43,11,8,3,0,0,0,0,0,0
+10,15,Correction for labor,440,360,63,11,8,3,0,0,0,0,0,0
+10,16,tcl,520,330,15,11,8,3,0,0,0,0,0,0
+10,17,Hiring rate,390,440,34,11,8,3,0,0,0,0,0,0
+10,18,Labor,270,440,57,19,8,3,0,0,0,0,0,0
+10,19,Quit rate,140,440,29,11,8,3,0,0,0,0,0,0
+10,20,ade,70,390,15,11,8,3,0,0,0,0,0,0
+10,21,B1: Inventory Control,210,170,40,15,8,1,0,0,0,0,0,0
+10,22,B2: Labor Adjustment,380,390,40,15,8,1,0,0,0,0,0,0
+10,23,B3: Quit Attrition,190,480,40,15,8,1,0,0,0,0,0,0
+10,24,R1: Replacement Hiring,270,520,40,15,8,1,0,0,0,0,0,0
+1,25,2,1,1,0,43,0,0,0,0,-1--1--1,,1|(195,80)|
+1,26,3,1,1,0,45,0,0,0,0,-1--1--1,,1|(345,60)|
+1,27,4,3,1,0,43,0,0,0,0,-1--1--1,,1|(485,90)|
+1,28,4,5,1,0,43,0,0,0,0,-1--1--1,,1|(520,165)|
+1,29,11,5,1,0,45,0,0,0,0,-1--1--1,,1|(495,225)|
+1,30,5,6,1,0,43,0,0,0,0,-1--1--1,,1|(425,170)|
+1,31,10,6,1,0,43,0,0,0,0,-1--1--1,,1|(420,130)|
+1,32,6,7,1,0,43,0,0,0,0,-1--1--1,,1|(330,135)|
+1,33,1,7,1,0,45,0,0,0,0,-1--1--1,,1|(260,105)|
+1,34,9,7,1,0,45,0,0,0,0,-1--1--1,,1|(290,125)|
+1,35,5,8,1,0,43,0,0,0,0,-1--1--1,,1|(370,225)|
+1,36,7,8,1,0,43,0,0,0,0,-1--1--1,,1|(260,180)|
+1,37,8,14,1,0,43,0,0,0,0,-1--1--1,,1|(335,260)|
+1,38,13,14,1,0,45,0,0,0,0,-1--1--1,,1|(290,295)|
+1,39,14,15,1,0,43,0,0,0,0,-1--1--1,,1|(415,325)|
+1,40,18,15,1,0,45,0,0,0,0,-1--1--1,,1|(340,385)|
+1,41,16,15,1,0,45,0,0,0,0,-1--1--1,,1|(485,340)|
+1,42,15,17,1,0,43,0,0,0,0,-1--1--1,,1|(425,410)|
+1,43,17,18,1,0,43,0,0,0,0,-1--1--1,,1|(330,435)|
+1,44,18,19,1,0,43,0,0,0,0,-1--1--1,,1|(205,435)|
+1,45,19,18,1,0,45,0,0,0,0,-1--1--1,,1|(205,465)|
+1,46,19,17,1,0,43,0,0,0,0,-1--1--1,,1|(265,510)|
+1,47,20,19,1,0,45,0,0,0,0,-1--1--1,,1|(105,420)|
+1,48,18,12,1,0,43,0,0,0,0,-1--1--1,,1|(185,355)|
+1,49,13,12,1,0,43,0,0,0,0,-1--1--1,,1|(155,270)|
+1,50,12,2,1,0,43,0,0,0,0,-1--1--1,,1|(125,170)|
+///---\\\

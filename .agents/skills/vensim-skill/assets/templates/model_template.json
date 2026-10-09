@@ -1,0 +1,17 @@
+{
+  "name": "填写中文模型名",
+  "language": "zh",
+  "sketch": {
+    "layout_mode": "circular"
+  },
+  "time": {
+    "initial": null,
+    "final": null,
+    "step": null,
+    "saveper": null,
+    "unit": null
+  },
+  "variables": [],
+  "links": [],
+  "feedback_loops": []
+}

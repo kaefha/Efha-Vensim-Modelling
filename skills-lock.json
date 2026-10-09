@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "vensim-skill": {
+      "source": "1837620622/vensim-system-dynamics-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vensim-skill/SKILL.md",
+      "computedHash": "20ed98e8e974d5bf41caa60ebcee81e2144754ee2320b80981bbc91302919d03"
+    }
+  }
+}

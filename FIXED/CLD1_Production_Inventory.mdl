@@ -1,0 +1,91 @@
+{UTF-8}
+Average order rate = SMOOTH(Order rate, taor)
+	~ units/Week
+	~ |
+
+Correction for inventory = (Desired inventory - Inventory) / tci
+	~ units/Week
+	~ |
+
+Desired inventory = Average order rate * dic
+	~ units
+	~ |
+
+Desired production rate = Average order rate + Correction for inventory
+	~ units/Week
+	~ |
+
+dic = 4
+	~ Week
+	~ |
+
+FINAL TIME = 100
+	~ Week
+	~ |
+
+INITIAL TIME = 0
+	~ Week
+	~ |
+
+Inventory = INTEG(Production rate - Shipment rate, 4000)
+	~ units
+	~ |
+
+Order rate = 1000 * (1 + STEP(0.1, 10))
+	~ units/Week
+	~ |
+
+Production rate = Desired production rate
+	~ units/Week
+	~ |
+
+SAVEPER = 1
+	~ Week
+	~ |
+
+Shipment rate = Order rate
+	~ units/Week
+	~ |
+
+taor = 8
+	~ Week
+	~ |
+
+tci = 8
+	~ Week
+	~ |
+
+TIME STEP = 1
+	~ Week
+	~ |
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96
+10,1,Inventory,250,90,40,20,8,3,0,0,0,0,0,0
+10,2,Production rate,130,170,49,11,8,3,0,0,0,0,0,0
+10,3,Shipment rate,380,130,44,11,8,3,0,0,0,0,0,0
+10,4,Order rate,490,200,34,11,8,3,0,0,0,0,0,0
+10,5,Average order rate,360,310,60,11,8,3,0,0,0,0,0,0
+10,6,Desired inventory,370,220,55,11,8,3,0,0,0,0,0,0
+10,7,Correction for inventory,250,220,75,11,8,3,0,0,0,0,0,0
+10,8,Desired production rate,170,310,74,11,8,3,0,0,0,0,0,0
+10,9,tci,250,160,15,11,8,3,0,0,0,0,0,0
+10,10,dic,450,250,15,11,8,3,0,0,0,0,0,0
+10,11,taor,450,340,15,11,8,3,0,0,0,0,0,0
+10,12,B1: Inventory Adjustment,210,265,50,15,8,1,0,0,0,0,0,0
+1,13,2,1,1,0,43,0,0,0,0,-1--1--1,,1|(175,115)|
+1,14,3,1,1,0,45,0,0,0,0,-1--1--1,,1|(325,100)|
+1,15,4,3,1,0,43,0,0,0,0,-1--1--1,,1|(445,155)|
+1,16,4,5,1,0,43,0,0,0,0,-1--1--1,,1|(440,270)|
+1,17,11,5,1,0,45,0,0,0,0,-1--1--1,,1|(405,335)|
+1,18,5,6,1,0,43,0,0,0,0,-1--1--1,,1|(370,265)|
+1,19,10,6,1,0,43,0,0,0,0,-1--1--1,,1|(415,230)|
+1,20,6,7,1,0,43,0,0,0,0,-1--1--1,,1|(305,215)|
+1,21,1,7,1,0,45,0,0,0,0,-1--1--1,,1|(235,155)|
+1,22,9,7,1,0,45,0,0,0,0,-1--1--1,,1|(250,190)|
+1,23,5,8,1,0,43,0,0,0,0,-1--1--1,,1|(265,325)|
+1,24,7,8,1,0,43,0,0,0,0,-1--1--1,,1|(195,255)|
+1,25,8,2,1,0,43,0,0,0,0,-1--1--1,,1|(135,245)|
+///---\\\

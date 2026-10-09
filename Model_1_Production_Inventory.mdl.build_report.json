@@ -1,0 +1,309 @@
+{
+  "strategy": "circular",
+  "moved_auxiliary_nodes": 0,
+  "rerouted_information_arrows": 9,
+  "before": {
+    "node_overlaps": [
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        8,
+        12
+      ]
+    ],
+    "arrow_node_collisions": [
+      {
+        "arrow": 20,
+        "object": 14
+      },
+      {
+        "arrow": 22,
+        "object": 11
+      }
+    ],
+    "physical_node_collisions": [],
+    "arrow_crossings": [],
+    "flow_crossings": [],
+    "unsupported_arrows": [],
+    "broken_arrows": [],
+    "shadow_inputs": [],
+    "shadow_overlaps": [],
+    "duplicate_defined": [],
+    "shadow_objects": [],
+    "hidden_shadow_objects": [],
+    "total_information_length": 1394.35,
+    "layout_bounds": [
+      130.0,
+      58.0,
+      766.0,
+      432.0
+    ],
+    "layout_width": 636.0,
+    "layout_height": 374.0,
+    "layout_span": 1010.0,
+    "approximation_tolerance_px": 0.5
+  },
+  "after": {
+    "node_overlaps": [
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        8,
+        12
+      ]
+    ],
+    "arrow_node_collisions": [],
+    "physical_node_collisions": [],
+    "arrow_crossings": [],
+    "flow_crossings": [],
+    "unsupported_arrows": [],
+    "broken_arrows": [],
+    "shadow_inputs": [],
+    "shadow_overlaps": [],
+    "duplicate_defined": [],
+    "shadow_objects": [],
+    "hidden_shadow_objects": [],
+    "total_information_length": 1223.98,
+    "layout_bounds": [
+      130.0,
+      58.0,
+      766.0,
+      432.0
+    ],
+    "layout_width": 636.0,
+    "layout_height": 374.0,
+    "layout_span": 1010.0,
+    "approximation_tolerance_px": 0.5
+  },
+  "candidates": [
+    {
+      "strategy": "circular",
+      "quality": [
+        0,
+        3,
+        0,
+        0,
+        1223.98,
+        1010.0
+      ]
+    },
+    {
+      "strategy": "circular",
+      "quality": [
+        0,
+        3,
+        0,
+        0,
+        1223.98,
+        1010.0
+      ]
+    }
+  ],
+  "requested_mode": "circular",
+  "fixed_positions": {
+    "Inventory": [
+      400,
+      80
+    ],
+    "Order rate": [
+      700,
+      220
+    ],
+    "taor": [
+      600,
+      420
+    ],
+    "Average order rate": [
+      500,
+      360
+    ],
+    "dic": [
+      620,
+      290
+    ],
+    "Desired inventory": [
+      530,
+      240
+    ],
+    "tci": [
+      440,
+      150
+    ],
+    "Correction for inventory": [
+      360,
+      190
+    ],
+    "Desired production rate": [
+      340,
+      420
+    ]
+  },
+  "pass": false,
+  "native_verified": false,
+  "feedback": {
+    "links": [
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 17,
+        "source": "Production rate",
+        "target": "Inventory",
+        "kind": "flow",
+        "displayed": "",
+        "expected": "+",
+        "status": "unmarked",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 18,
+        "source": "Shipment rate",
+        "target": "Inventory",
+        "kind": "flow",
+        "displayed": "",
+        "expected": "-",
+        "status": "unmarked",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 20,
+        "source": "Desired production rate",
+        "target": "Production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 21,
+        "source": "Order rate",
+        "target": "Shipment rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 22,
+        "source": "Order rate",
+        "target": "Average order rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 23,
+        "source": "taor",
+        "target": "Average order rate",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 24,
+        "source": "Average order rate",
+        "target": "Desired inventory",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 25,
+        "source": "dic",
+        "target": "Desired inventory",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 26,
+        "source": "Desired inventory",
+        "target": "Correction for inventory",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 27,
+        "source": "Inventory",
+        "target": "Correction for inventory",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "-",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 28,
+        "source": "tci",
+        "target": "Correction for inventory",
+        "kind": "information",
+        "displayed": "-",
+        "expected": "unknown",
+        "status": "needs_review",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 29,
+        "source": "Average order rate",
+        "target": "Desired production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      },
+      {
+        "view": "Production and Inventory Model 1",
+        "arrow": 30,
+        "source": "Correction for inventory",
+        "target": "Desired production rate",
+        "kind": "information",
+        "displayed": "+",
+        "expected": "+",
+        "status": "verified",
+        "native_dtype": "64"
+      }
+    ],
+    "loops": [],
+    "conflicts": [],
+    "unresolved": [],
+    "status": "needs_review",
+    "native_verified": false,
+    "symbol_placement_requires_native_review": true,
+    "scope": "只证明支持表达式在当前字面常量下的直接作用；未标注不等于已验证。重跑改变参数后须重查；回路性质不表示动态稳定性。"
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "name": "Production and Inventory Model 2",
+  "language": "en",
+  "time": {
+    "initial": 0,
+    "final": 100,
+    "step": 0.125,
+    "saveper": 1,
+    "unit": "Week"
+  },
+  "variables": [
+    {
+      "name": "Inventory",
+      "kind": "stock",
+      "initial": "4000",
+      "unit": "units",
+      "position": [400, 70]
+    },
+    {
+      "name": "Production rate",
+      "kind": "flow",
+      "from": null,
+      "to": "Inventory",
+      "equation": "Normal production rate",
+      "unit": "units/Week"
+    },
+    {
+      "name": "Shipment rate",
+      "kind": "flow",
+      "from": "Inventory",
+      "to": null,
+      "equation": "Order rate",
+      "unit": "units/Week"
+    },
+    {
+      "name": "Order rate",
+      "kind": "aux",
+      "equation": "1000 * (1 + STEP(0.1, 10))",
+      "unit": "units/Week",
+      "position": [720, 200]
+    },
+    {
+      "name": "taor",
+      "kind": "constant",
+      "equation": "8",
+      "unit": "Week",
+      "position": [620, 400]
+    },
+    {
+      "name": "Average order rate",
+      "kind": "aux",
+      "equation": "SMOOTH(Order rate, taor)",
+      "unit": "units/Week",
+      "position": [520, 340]
+    },
+    {
+      "name": "dic",
+      "kind": "constant",
+      "equation": "4",
+      "unit": "Week",
+      "position": [640, 270]
+    },
+    {
+      "name": "Desired inventory",
+      "kind": "aux",
+      "equation": "Average order rate * dic",
+      "unit": "units",
+      "position": [530, 220]
+    },
+    {
+      "name": "tci",
+      "kind": "constant",
+      "equation": "8",
+      "unit": "Week",
+      "position": [450, 140]
+    },
+    {
+      "name": "Correction for inventory",
+      "kind": "aux",
+      "equation": "(Desired inventory - Inventory) / tci",
+      "unit": "units/Week",
+      "position": [360, 180]
+    },
+    {
+      "name": "Desired production rate",
+      "kind": "aux",
+      "equation": "Average order rate + Correction for inventory",
+      "unit": "units/Week",
+      "position": [360, 390]
+    },
+    {
+      "name": "Labor",
+      "kind": "stock",
+      "initial": "50",
+      "unit": "person",
+      "position": [400, 700]
+    },
+    {
+      "name": "Hiring rate",
+      "kind": "flow",
+      "from": null,
+      "to": "Labor",
+      "equation": "Quit rate + Correction for labor",
+      "unit": "person/Week"
+    },
+    {
+      "name": "Quit rate",
+      "kind": "flow",
+      "from": "Labor",
+      "to": null,
+      "equation": "Labor / ade",
+      "unit": "person/Week"
+    },
+    {
+      "name": "ade",
+      "kind": "constant",
+      "equation": "50",
+      "unit": "Week",
+      "position": [180, 570]
+    },
+    {
+      "name": "Average labor productivity",
+      "kind": "constant",
+      "equation": "20",
+      "unit": "units/person/Week",
+      "position": [400, 520]
+    },
+    {
+      "name": "Desired labor",
+      "kind": "aux",
+      "equation": "Desired production rate / Average labor productivity",
+      "unit": "person",
+      "position": [600, 460]
+    },
+    {
+      "name": "tcl",
+      "kind": "constant",
+      "equation": "24",
+      "unit": "Week",
+      "position": [660, 540]
+    },
+    {
+      "name": "Correction for labor",
+      "kind": "aux",
+      "equation": "(Desired labor - Labor) / tcl",
+      "unit": "person/Week",
+      "position": [580, 560]
+    },
+    {
+      "name": "Normal production rate",
+      "kind": "aux",
+      "equation": "Labor * Average labor productivity",
+      "unit": "units/Week",
+      "position": [180, 440]
+    }
+  ],
+  "links": [
+    {
+      "from": "Inventory",
+      "to": "Correction for inventory",
+      "polarity": "-"
+    },
+    {
+      "from": "Desired inventory",
+      "to": "Correction for inventory",
+      "polarity": "+"
+    },
+    {
+      "from": "tci",
+      "to": "Correction for inventory",
+      "polarity": "-"
+    },
+    {
+      "from": "Correction for inventory",
+      "to": "Desired production rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Average order rate",
+      "to": "Desired production rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Average order rate",
+      "to": "Desired inventory",
+      "polarity": "+"
+    },
+    {
+      "from": "dic",
+      "to": "Desired inventory",
+      "polarity": "+"
+    },
+    {
+      "from": "Order rate",
+      "to": "Average order rate",
+      "polarity": "+"
+    },
+    {
+      "from": "taor",
+      "to": "Average order rate",
+      "polarity": "-"
+    },
+    {
+      "from": "Order rate",
+      "to": "Shipment rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Desired production rate",
+      "to": "Desired labor",
+      "polarity": "+"
+    },
+    {
+      "from": "Average labor productivity",
+      "to": "Desired labor",
+      "polarity": "-"
+    },
+    {
+      "from": "Desired labor",
+      "to": "Correction for labor",
+      "polarity": "+"
+    },
+    {
+      "from": "Labor",
+      "to": "Correction for labor",
+      "polarity": "-"
+    },
+    {
+      "from": "tcl",
+      "to": "Correction for labor",
+      "polarity": "-"
+    },
+    {
+      "from": "Correction for labor",
+      "to": "Hiring rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Labor",
+      "to": "Quit rate",
+      "polarity": "+"
+    },
+    {
+      "from": "ade",
+      "to": "Quit rate",
+      "polarity": "-"
+    },
+    {
+      "from": "Quit rate",
+      "to": "Hiring rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Labor",
+      "to": "Normal production rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Average labor productivity",
+      "to": "Normal production rate",
+      "polarity": "+"
+    },
+    {
+      "from": "Normal production rate",
+      "to": "Production rate",
+      "polarity": "+"
+    }
+  ]
+}
